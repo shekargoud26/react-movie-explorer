@@ -1,2 +1,2 @@
-# react-movie-database
+# react-movie-explorer
 A Website to view and explore movies

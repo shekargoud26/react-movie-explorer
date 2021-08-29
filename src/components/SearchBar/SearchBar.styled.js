@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 60px;
   background: var(--darkGrey);
   padding: 0 20px;
 `;
@@ -12,7 +12,7 @@ export const Content = styled.div`
   position: relative;
   max-width: var(--maxWidth);
   width: 100%;
-  height: 55px;
+  height: 44px;
   background: var(--medGrey);
   margin: 0 auto;
   border-radius: 40px;
@@ -21,7 +21,7 @@ export const Content = styled.div`
   img {
     position: absolute;
     left: 15px;
-    top: 14px;
+    top: 10px;
     width: 30px;
   }
 
@@ -34,7 +34,7 @@ export const Content = styled.div`
     border: 0;
     width: 95%;
     background: transparent;
-    height: 40px;
+    height: 32px;
     color: var(--white);
 
     :focus {
