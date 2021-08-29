@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import API from '../API';
+import { isPersistedState } from "../helpers";
 
 const initialState = {
     page: 0,
@@ -33,8 +34,17 @@ const useHomeFetch = () => {
             setError(true);
         }
     };
-    // search
+    // search & initial
     useEffect(() => {
+        // checking if data is present in session
+        if(!searchTerm) {
+            const sessionState = isPersistedState('homeState');
+            if(sessionState) {
+                setState(sessionState);
+                return;
+            }
+               
+        }
         setState(initialState);
         fetchMovies(1, searchTerm);
     }, [searchTerm]);
@@ -46,6 +56,11 @@ const useHomeFetch = () => {
         setIsLoadingMore(false);
     }, [isLoadingMore, state.page, searchTerm]);
 
+    // setting session storage
+    useEffect(() => {
+        if(!searchTerm)
+            sessionStorage.setItem('homeState', JSON.stringify(state));
+    }, [searchTerm, state]);
     return { state, loading, error, searchTerm, setSearchTerm, isLoadingMore, setIsLoadingMore };
 }
 
